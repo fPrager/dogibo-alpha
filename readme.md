@@ -1,4 +1,4 @@
-# How to setup prsima and existing PostgreSQL
+# How to setup prisma and existing PostgreSQL
 
 1. write the schema.sql file
 2. setting up the database with the following command:
@@ -7,7 +7,7 @@
 
 3. setup prisma schema file with
 
-  `npx primsa init`
+  `npx prisma init`
 
 4. update prisma file on db scheme
 
