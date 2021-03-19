@@ -1,0 +1,18 @@
+[
+    {
+        "donor": "Gabi",
+        "amount": 30.50,
+        "msg": "What what",
+        "image": "https://picsum.photos/300/300"
+    },
+    {
+        "donor": "Borris Becker",
+        "amount": 5,
+        "msg": ""
+    },
+    {
+        "donor": "Florian Borian",
+        "amount": 20,
+        "msg": "Bambulé"
+    }    
+]
