@@ -1,7 +1,7 @@
 {
-    "extends": "airbnb",
+    "extends": "airbnb-typescript",
     "rules": {    
-        "react/jsx-filename-extension": "off",
+        "react/jsx-filename-extension": "on",
         "react/jsx-props-no-spreading": "off" ,
         "react/prop-types": "off"
     },

@@ -1,7 +1,7 @@
 import type { AppProps /*, AppContext */ } from 'next/app'
 
 import { GeistProvider, CssBaseline, Page } from '@geist-ui/react';
-import DefaultTheme from './themes';
+import DefaultTheme from '../themes/default';
 
 import '../styles/main.scss';
 

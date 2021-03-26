@@ -1,63 +1,70 @@
-import { useRef, useState } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 
-import { Engine, Scene, useBeforeRender, useClick, useHover } from 'react-babylonjs'
-import { Vector3, Color3 } from '@babylonjs/core'
+import { Engine, Scene, Model, useBeforeRender, useClick, useHover, ILoadedModel } from 'react-babylonjs'
+import { Vector3, Color3, Mesh, Color4 } from '@babylonjs/core'
 
-const DefaultScale = new Vector3(1, 1, 1);
-const BiggerScale = new Vector3(1.25, 1.25, 1.25);
+import '@babylonjs/loaders';
 
+import ScaledModelWithProgress from './ScaledModelWithProgress';
 
 import styles from './Box.module.scss'
 
-const SpinningBox = (props) => {
-    // access Babylon scene objects with same React hook as regular DOM elements
-    const boxRef = useRef(null);
-  
-    const [clicked, setClicked] = useState(false);
-    useClick(
-      () => setClicked(clicked => !clicked),
-      boxRef
-    );
-  
-    const [hovered, setHovered] = useState(false);
-    useHover(
-      () => setHovered(true),
-      () => setHovered(false),
-      boxRef
-    );
-  
-    // This will rotate the box on every Babylon frame.
-    const rpm = 5;
-    useBeforeRender((scene) => {
-      if (boxRef.current) {
-        // Delta time smoothes the animation.
-        var deltaTimeInMillis = scene.getEngine().getDeltaTime();
-        boxRef.current.rotation.y += ((rpm / 60) * Math.PI * 2 * (deltaTimeInMillis / 1000));
-      }
-    });
-  
-    return (<box name={props.name} ref={boxRef} size={2} position={props.position} scaling={clicked ? BiggerScale : DefaultScale}>
-      <standardMaterial name={`${props.name}-mat`} diffuseColor={hovered ? props.hoveredColor : props.color} specularColor={Color3.Black()} />
-    </box>);
+export interface BoxProps {
+
+}
+
+export const Box: React.FC<BoxProps> = () => {
+  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const resize = () => {
+    if(ref.current){
+      setHeight(ref.current.clientHeight);
+      setWidth(ref.current.clientWidth);
+    }
   }
 
-const Box = () => {
+  useEffect(() => {
+      resize();
+      if(window)
+        window.onresize = resize
+  }, []);
+
+  const onModelLoaded = (model: ILoadedModel) =>  {
+      const { animationGroups } = model;
+      animationGroups?.forEach((ani) => {
+        ani.stop();
+      });
+  }
+
     return (
-        <div className={styles.box}>
-            <Engine antialias adaptToDeviceRatio canvasId='scene' >
-                <Scene>
-                     <arcRotateCamera name="camera1" target={Vector3.Zero()} alpha={Math.PI / 2} beta={Math.PI / 4} radius={8} />
-                    <hemisphericLight name='light1' intensity={0.7} direction={Vector3.Up()} />
-                    <SpinningBox name='left' position={new Vector3(-2, 0, 0)}
-                    color={Color3.FromHexString('#0005EB')} hoveredColor={Color3.FromHexString('#C26DBC')}
+        <div className={styles.box} ref={ref}>
+            <Engine height={height} width={width} antialias adaptToDeviceRatio canvasId='scene'>
+                <Scene clearColor={new Color4(0,0,0,0)}>
+                    <arcRotateCamera 
+                      name="camera1" 
+                      target={new Vector3(0,1,0)} 
+                      alpha={Math.PI / 1.5}
+                      beta={Math.PI * 0.5}
+                      radius={5}
+                      upperRadiusLimit={7}
+                      lowerRadiusLimit={4} 
+                      panningSensibility={0}    
+                      wheelPrecision={10000}
+                      angularSensibilityX={5000}         
+                      angularSensibilityY={10000}       
                     />
-                    <SpinningBox name='right' position={new Vector3(2, 0, 0)}
-                    color={Color3.FromHexString('#C8F4F9')} hoveredColor={Color3.FromHexString('#3CACAE')}
+                    <hemisphericLight name='light1' intensity={1.4} direction={Vector3.Up()} />
+                    <ScaledModelWithProgress 
+                    rootUrl='./gltf/' 
+                    sceneFilename='chest.gltf' 
+                    scaleToDimension={2} 
+                    position={Vector3.Zero()} 
+                    onModelLoaded={onModelLoaded}
                     />
                 </Scene>
             </Engine>
         </div>
     )
 };
-
-export default Box;

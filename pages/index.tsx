@@ -2,7 +2,7 @@ import { Grid, Card } from '@geist-ui/react';
 import Box from '../components/Box';
 import Text from '../components/Text';
 
-const MockItem = ({ children }) => {
+const MockItem = ({ children }: { children: any }) => {
   return <Card style={{ width: '100%', height: '100%'}} >{children}</Card>
 }
 
