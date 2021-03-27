@@ -1,12 +1,14 @@
 import DataMock from '../mocks/dogibo.json';
 
-const Text = () => {
-    return (
-        <>
-        <p>Blub</p>
-        <div>{ DataMock.instructions }</div>
-        </>
-    )
+import styles from './Text.module.scss';
+
+export interface TextProps {
+
 }
 
-export default Text;
+export const Text: React.FC<TextProps> = () => (
+  <div className={styles.text}>
+    <div>This is a </div>
+    <div>{ DataMock.instructions }</div>
+  </div>
+);

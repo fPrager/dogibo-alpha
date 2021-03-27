@@ -1,14 +1,20 @@
 {
     "extends": "airbnb-typescript",
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
     "rules": {    
-        "react/jsx-filename-extension": "on",
+        "react/jsx-filename-extension": "off",
         "react/jsx-props-no-spreading": "off" ,
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "import/no-extraneous-dependencies": "off"
     },
     "globals": {    
         "React": "readonly",
         "fetch": "readonly",
         "localStorage": "readonly",
         "window": "readonly"
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json"
     }
 }
