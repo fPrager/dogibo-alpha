@@ -1,12 +1,12 @@
 .box:before {
-    background-image: url('../public/images/Swoosh.png');
-    background-position: 90% 50%;
-    background-size: 80%;
+    background-image: url('../public/images/swoosh.png');
+    background-position: 60% 50%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: darken;
     opacity: 0.1;
     height: 100%;
-    width: 100%;
+    width:100%;
     content: ' ';
     position: absolute;
 };
@@ -17,6 +17,7 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    height: 70vh;
 }
 
 canvas {

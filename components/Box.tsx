@@ -39,7 +39,11 @@ export const Box: React.FC<BoxProps> = () => {
   const onModelLoaded = (model: ILoadedModel) => {
     const { animationGroups } = model;
     animationGroups?.forEach((ani) => {
-      ani.stop();
+      ani.play();
+      ani.loopAnimation = true;
+      if (ani.name !== 'Armature|Take 001|BaseLayer') {
+        ani.stop();
+      }
     });
   };
 
