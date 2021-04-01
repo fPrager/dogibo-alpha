@@ -35,7 +35,7 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
     Number.parseInt(DataMock.birthday.split('/')[2], 10),
   );
 
-  const { setState, bindings } = useTabs('2');
+  const { setState, bindings } = useTabs('1');
 
   const MainText = (
     <>

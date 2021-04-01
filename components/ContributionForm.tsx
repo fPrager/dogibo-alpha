@@ -1,27 +1,44 @@
 import { useRef, useState } from 'react';
 import { Input, Button, Spacer } from '@geist-ui/react';
-import NumericInput from 'react-numeric-input';
+import numeral from 'numeral';
 
 export interface ContributionFormProps {
 
 }
 
+numeral.register('locale', 'de', {
+  delimiters: {
+    thousands: ' ',
+    decimal: ',',
+  },
+  abbreviations: {
+    thousand: 'k',
+    million: 'm',
+    billion: 'b',
+    trillion: 't',
+  },
+  ordinal(number) {
+    return number === 1 ? 'er' : 'ème';
+  },
+  currency: {
+    symbol: '€',
+  },
+});
+numeral.locale('de');
+
 export const ContributionForm: React.FC<ContributionFormProps> = ({
 
 }) => {
-  const ref = useRef<NumericInput>(null);
-  const [amount, setAmount] = useState('0 €');
-  const [num, setNum] = useState(amount);
+  const [amountValue, setAmountValue] = useState('0 €');
+  const [amount, setAmount] = useState(0);
 
-  const numInput = (value: string) => {
-    setNum(value);
-    setAmount(value);
+  const onAmountChange = (value: string) => {
+    setAmount(numeral(value).value() || 0);
+    setAmountValue(value);
   };
 
-  const validate = () => {
-    if (ref.current) {
-      setAmount(`${ref.current.refsInput.getValueAsNumber()} €`);
-    }
+  const onAmountBlur = () => {
+    setAmountValue(`${amount} €`);
   };
 
   return (
@@ -30,14 +47,11 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
         Damit deine Spende mit in der Box landet,
         kannst du hier den Betrag und einen Gruß angeben.
       </p>
-      <div style={{ display: 'none' }}>
-        <NumericInput value={num} ref={ref} min={0} />
-      </div>
       <Spacer />
       <Input
-        value={amount}
-        onChange={(e) => numInput(e.target.value)}
-        onBlur={validate}
+        value={amountValue}
+        onChange={(e) => onAmountChange(e.target.value)}
+        onBlur={onAmountBlur}
       >
         Dein Spendenbetrag
       </Input>

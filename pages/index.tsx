@@ -9,7 +9,7 @@ export interface AppProps {
 }
 
 export const App = () => {
-  const [stage, setStage] = useState(AppStage.CONTRIBUTE);
+  const [stage, setStage] = useState(AppStage.MAIN);
   return (
     <Grid.Container gap={2} style={{ minHeight: '90vh' }}>
       <Grid xs={24} md={12}>
