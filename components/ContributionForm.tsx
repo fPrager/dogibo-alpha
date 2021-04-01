@@ -1,29 +1,12 @@
 import { useRef, useState } from 'react';
 import { Input, Button, Spacer } from '@geist-ui/react';
 import numeral from 'numeral';
+import 'numeral/locales/de';
 
 export interface ContributionFormProps {
 
 }
 
-numeral.register('locale', 'de', {
-  delimiters: {
-    thousands: ' ',
-    decimal: ',',
-  },
-  abbreviations: {
-    thousand: 'k',
-    million: 'm',
-    billion: 'b',
-    trillion: 't',
-  },
-  ordinal(number) {
-    return number === 1 ? 'er' : 'ème';
-  },
-  currency: {
-    symbol: '€',
-  },
-});
 numeral.locale('de');
 
 export const ContributionForm: React.FC<ContributionFormProps> = ({

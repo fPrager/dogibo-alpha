@@ -68,7 +68,7 @@ export const Box: React.FC<BoxProps> = () => {
           />
           <hemisphericLight name="light1" intensity={1.4} direction={Vector3.Up()} />
           <ScaledModelWithProgress
-            rootUrl="./gltf/"
+            rootUrl="/gltf/"
             sceneFilename="chest.gltf"
             scaleToDimension={2}
             position={Vector3.Zero()}

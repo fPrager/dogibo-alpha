@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }: AppProps) => (
   <>
     <GeistProvider themes={[DefaultTheme]} themeType="default">
       <CssBaseline />
-      <Page size="large" dotBackdrop>
+      <Page size="large">
         <Page.Content>
           <Component {...pageProps} />
         </Page.Content>

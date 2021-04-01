@@ -10,7 +10,6 @@ import {
 //   GeistUIThemesPalette,
 //   GeistUIThemesExpressiveness,
   Themes,
-  GeistUIThemes,
   GeistUIThemesFont,
 } from '@geist-ui/react';
 
@@ -19,9 +18,15 @@ const font: GeistUIThemesFont = {
   sans: 'SmoothySans',
 };
 
+const palette: Object = {
+  background: '#e5e5d3',
+  foreground: '#111155',
+};
+
 const DefaultTheme = Themes.createFromLight({
   type: 'default',
-  //  font,
+  font,
+  palette,
 });
 
 export default DefaultTheme;
