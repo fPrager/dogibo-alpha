@@ -43,7 +43,7 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
       <Spacer />
       <Input>Dein Gruß</Input>
       <Spacer />
-      <Button>Jetzt reinwerfen!</Button>
+      <Button type="secondary">Jetzt reinwerfen!</Button>
     </>
   );
 };
