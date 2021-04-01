@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Donation {
-  id      Int      @id @default(autoincrement())
-  name    String?
-  message String?
-  amount  Float
-  anonym  Boolean?
+  id     Int     @id @default(autoincrement())
+  donor  String?
+  msg    String?
+  amount Float
+  client String? @unique
 }

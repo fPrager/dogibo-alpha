@@ -1,12 +1,13 @@
 import ReactMarkdown from 'react-markdown';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { Tabs, useTabs } from '@geist-ui/react';
+import { Spinner, Tabs, useTabs } from '@geist-ui/react';
 
 import DataMock from '../mocks/dogibo.json';
 import AppStage from '../utils/AppStage';
 import getDaysTo from '../utils/get-days-to';
 import styles from './Text.module.scss';
 import { ContributionForm } from './ContributionForm';
+import { Donation } from '.prisma/client';
 
 interface TextButtonProps {
   text: string,
@@ -24,11 +25,23 @@ const TextButton: React.FC<TextButtonProps> = ({
 );
 
 export interface TextProps {
+  donation: Donation,
+  newDonation: boolean,
+  loading: boolean,
+  updateDonation: Function,
   stage: AppStage
   setStage: Function,
 }
 
-export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
+export const Text: React.FC<TextProps> = ({
+  stage,
+  setStage,
+  loading,
+  donation,
+  newDonation,
+  updateDonation,
+}) => {
+  console.log('render text with', donation);
   const days2Event = getDaysTo(
     Number.parseInt(DataMock.birthday.split('/')[1], 10),
     Number.parseInt(DataMock.birthday.split('/')[0], 10),
@@ -36,6 +49,18 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
   );
 
   const { setState, bindings } = useTabs('1');
+
+  const ContributeButton = (
+    <TextButton
+      text={
+        newDonation
+          ? 'Und hier kannst du mitmachen'
+          : 'Hier kannst du nochmal was ändern'
+     }
+      arrowed
+      onClick={() => setStage(AppStage.CONTRIBUTE)}
+    />
+  );
 
   const MainText = (
     <>
@@ -48,14 +73,16 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
         {' '}
         {DataMock.presentee}
         s Geburtstag
-        <TextButton text={`in ${days2Event} Tagen`} onClick={() => setStage(AppStage.EVENT)} />
+        <TextButton text={days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`} onClick={() => setStage(AppStage.EVENT)} />
       </div>
       <div className={styles.block}>
         und für
         <TextButton text={DataMock.donee} onClick={() => setStage(AppStage.TOPIC)} />
       </div>
       <div className={styles.contribution}>
-        <TextButton text="Und hier kannst du mitmachen " arrowed onClick={() => setStage(AppStage.CONTRIBUTE)} />
+        {
+          loading ? <Spinner /> : ContributeButton
+        }
       </div>
     </>
   );
@@ -63,7 +90,7 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
   const DoGiBoText = (
     <>
       <span className={styles.highlight}>
-        Das ist
+
         {' '}
         {DataMock.name}
         {' '}
@@ -81,10 +108,12 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
       </p>
       <p>
         Die Spendenbox erhält
+        {' '}
         <span className={styles.highlight}>{DataMock.presentee}</span>
-        zu seinem Geburtstag.
+        {' '}
+        dann zu seinem Geburtstag.
         Wenn du also einen Beitrag in die Box wirfst, gibt es mehr zu Spenden und du beteiligst dich
-        gleich an einem passenden Geschenk.
+        gleichzeitig an einem passenden Geschenk.
       </p>
       <p>
         <span className={styles.highlight}>
@@ -112,11 +141,9 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
         bis zu seinem Geburtstag
         {' '}
         <span className={styles.highlight}>
-          in
-          {' '}
-          {days2Event}
-          {' '}
-          Tagen
+          {
+            days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`
+          }
         </span>
         {' '}
         verschlossen.
@@ -129,7 +156,8 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
         einzuzahlen und sie zu befüllen.
       </p>
       <p>
-        Für ihn wird es dann eine Überraschung werden, wieviele Spenden er mit seinem Geschenk sammeln konnte.
+        Für ihn wird es dann eine Überraschung werden,
+        wieviele Spenden er mit seinem Geschenk sammeln konnte.
       </p>
       <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
@@ -160,7 +188,7 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
                 warum:
               </p>
               <p>
-                <ReactMarkdown>{DataMock.background}</ReactMarkdown>
+                <ReactMarkdown linkTarget="_blank">{DataMock.background}</ReactMarkdown>
               </p>
             </>
           )
@@ -169,7 +197,25 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
     </>
   );
 
-  const ContributeText = (
+  const LinkedContributionForm = (
+    <ContributionForm
+      donation={donation}
+      updateDonation={updateDonation}
+      newDonation={newDonation}
+    />
+  );
+
+  const ExistingContributeText = (
+    <>
+      <span className={styles.highlight}>Danke für deine Spende!</span>
+      <div className={styles.contributeForm}>
+        { LinkedContributionForm }
+      </div>
+      <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+    </>
+  );
+
+  const NewContributeText = (
     <>
       <span className={styles.highlight}>So machst du mit</span>
       <p>
@@ -182,10 +228,10 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
       <div className={styles.contributeForm}>
         <Tabs {...bindings}>
           <Tabs.Item label="Schritt 1" value="1">
-            <ReactMarkdown>{DataMock.instructions}</ReactMarkdown>
+            <ReactMarkdown linkTarget="_blank">{DataMock.instructions}</ReactMarkdown>
             <TextButton text="Zu Schritt 2" arrowed onClick={() => setState('2')} />
           </Tabs.Item>
-          <Tabs.Item label="Schritt 2" value="2"><ContributionForm /></Tabs.Item>
+          <Tabs.Item label="Schritt 2" value="2">{ LinkedContributionForm }</Tabs.Item>
         </Tabs>
       </div>
       <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
@@ -207,7 +253,7 @@ export const Text: React.FC<TextProps> = ({ stage, setStage }) => {
       SelectedText = TopicText;
       break;
     case AppStage.CONTRIBUTE:
-      SelectedText = ContributeText;
+      SelectedText = newDonation ? NewContributeText : ExistingContributeText;
       break;
     default:
       SelectedText = MainText;

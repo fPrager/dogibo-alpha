@@ -1,7 +1,7 @@
 CREATE TABLE "app-alpha"."Donation" (
   id SERIAL PRIMARY KEY NOT NULL,
-  "name" TEXT,
-  "message" TEXT,
+  "donor" TEXT,
+  "msg" TEXT,
   "amount" FLOAT NOT NULL,
-  "anonym" BOOLEAN 
+  "client" TEXT 
 );
