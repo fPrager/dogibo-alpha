@@ -25,8 +25,10 @@
     "react": "17.0.1",
     "react-babylonjs": "^3.0.14",
     "react-confetti": "^6.0.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "17.0.1",
     "react-markdown": "^5.0.3",
+    "react-numeric-input": "^2.2.3",
     "react-use": "^17.2.1"
   },
   "devDependencies": {

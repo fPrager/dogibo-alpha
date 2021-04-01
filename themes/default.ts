@@ -9,20 +9,19 @@ import {
 //   GeistUIThemes,
 //   GeistUIThemesPalette,
 //   GeistUIThemesExpressiveness,
-Themes,
-GeistUIThemes,
-GeistUIThemesFont,
+  Themes,
+  GeistUIThemes,
+  GeistUIThemesFont,
 } from '@geist-ui/react';
 
-
 const font: GeistUIThemesFont = {
-    mono: "SmoothySans",
-    sans: "SmoothySans",
+  mono: 'SmoothySans',
+  sans: 'SmoothySans',
 };
 
 const DefaultTheme = Themes.createFromLight({
-    type: 'default',
-    font,
+  type: 'default',
+  //  font,
 });
 
 export default DefaultTheme;

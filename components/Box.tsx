@@ -14,9 +14,11 @@ import '@babylonjs/loaders';
 import ScaledModelWithProgress from './ScaledModelWithProgress';
 
 import styles from './Box.module.scss';
+import AppStage from '../utils/AppStage';
 
 export interface BoxProps {
-
+  stage: AppStage,
+  setStage: Function,
 }
 
 export const Box: React.FC<BoxProps> = () => {

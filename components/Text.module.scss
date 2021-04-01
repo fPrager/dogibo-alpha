@@ -1,22 +1,31 @@
 .text {
     display: block;
     position: relative;
-    height: 0px;
+    height: 80%;
     overflow: visible;
-    top: 50%;
+    top: 20%;
+    width: 100%;
 }
 
 .block {
-    width: 50vw;
-    margin-top: 1rem;
-    display: inline-block;
-    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+.textContent {
+    img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        box-shadow: black 0rem 0.1rem 0.6rem;
+    }
+    padding-right: 4rem;
 }
 
 .textButton {
     color: #00729c;
     display: inline-block;
-    padding-left: 5px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     position: relative;
     cursor: pointer;
 
@@ -24,6 +33,10 @@
         color: #034e6a;
     }
 
+
+}
+
+.arrowed{
     &::after {
         content: '';
         height: 1rem;
@@ -36,10 +49,40 @@
         background-repeat: no-repeat;
         transform: rotate(180deg);
     }
+    &.bwd {
+        left: 1rem;
+    }
 
-    
-    .before {
-        color: black;
+    &.bwd::after {
+        transform: none;
+        left: -1.3rem;
+        top: 0.5rem;
     }
 }
 
+.inline {
+    display: inline-block;
+}
+
+.fadeIn {
+    animation: fadeIn ease 3s;
+}
+
+.highlight {
+    color: #00729c;
+    display: inline-block;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+.contribution {
+    margin-top: 4rem;
+}
+
+.contributeForm {
+    min-height: 10rem;
+    margin-bottom: 2rem;
+}
