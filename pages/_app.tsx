@@ -1,4 +1,4 @@
-import type { AppProps /*, AppContext */ } from 'next/app'
+import type { AppProps /* , AppContext */ } from 'next/app';
 
 import { GeistProvider, CssBaseline, Page } from '@geist-ui/react';
 import DefaultTheme from '../themes/default';
@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }: AppProps) => (
   <>
     <GeistProvider themes={[DefaultTheme]} themeType="default">
       <CssBaseline />
-      <Page size='large' dotBackdrop>
+      <Page size="large" dotBackdrop>
         <Page.Content>
           <Component {...pageProps} />
         </Page.Content>

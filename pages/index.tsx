@@ -4,11 +4,11 @@ import { Box } from '../components/Box';
 import { Text } from '../components/Text';
 import AppStage from '../utils/AppStage';
 
-export interface AppProps {
+interface AppProps {
 
 }
 
-export const App = () => {
+const App: React.FC<AppProps> = () => {
   const [stage, setStage] = useState(AppStage.MAIN);
   return (
     <Grid.Container gap={2} style={{ minHeight: '90vh' }}>
@@ -21,3 +21,5 @@ export const App = () => {
     </Grid.Container>
   );
 };
+
+export default App;

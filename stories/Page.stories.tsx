@@ -2,7 +2,8 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Page } from '@geist-ui/react';
 
-import { App, AppProps } from '../pages/index';
+import React from 'react';
+import App from '../pages/index';
 
 export default {
   title: 'Pages/Index',
@@ -15,7 +16,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<AppProps> = (args) => (
+const Template: Story<React.FC> = (args) => (
   <Page size="large">
     <Page.Content>
       <App {...args} />

@@ -24,6 +24,8 @@
     height: 70vh;
 }
 
-canvas {
-    filter:drop-shadow(2px 2px 10px rgba(100, 100, 100, 0.8))
+.box {
+    canvas {
+        filter:drop-shadow(2px 2px 10px rgba(100, 100, 100, 0.8))
+    }
 }
