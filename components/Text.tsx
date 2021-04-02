@@ -50,7 +50,6 @@ export const Text: React.FC<TextProps> = ({
 
   const { setState, bindings } = useTabs('1');
   const [height, setHeight] = useState('99%');
-
   useEffect(() => {
     setHeight('100%');
   }, []);
@@ -274,7 +273,7 @@ export const Text: React.FC<TextProps> = ({
 
   return (
     <div key={`text-${stage}`} className={`${styles.text} ${styles.fadeIn}`}>
-      <Scrollbars style={{ height }}>
+      <Scrollbars key={`scroll-${height}`} style={{ height, width: '100%' }}>
         <div className={styles.textContent}>
           {SelectedText}
         </div>

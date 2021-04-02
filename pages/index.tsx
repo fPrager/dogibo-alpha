@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Grid } from '@geist-ui/react';
 import { Box } from '../components/Box';
 import { Text } from '../components/Text';
 import AppStage from '../utils/AppStage';
@@ -49,9 +48,8 @@ const App: React.FC<AppProps> = () => {
   return (
     <>
       <div className="boxContainer">
-        <Box stage={stage} setStage={setStage} />
         <BankNote stage={stage} donation={donation} newDonation={newDonation} />
-
+        <Box stage={stage} setStage={setStage} />
       </div>
       <div className="textContainer">
         <Text

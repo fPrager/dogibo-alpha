@@ -1,7 +1,6 @@
 .text {
     display: block;
     position: relative;
-    height: 100%;
     overflow: visible;
     width: 100%;
     padding: 1rem;
@@ -16,6 +15,10 @@
 }
 
 .textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
     img {
         position: relative;
         left: 50%;
