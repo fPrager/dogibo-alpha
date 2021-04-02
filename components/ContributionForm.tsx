@@ -97,7 +97,7 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
         value={donation.msg || undefined}
         onChange={(e) => onDonationChange({ ...donation, msg: e.target.value }, newDonation)}
         label="Dein Gruß"
-        placeholder="wer das liest ist ❤️"
+        placeholder="Wer das liest ist ❤️"
         className={styles.scaledInput}
         width="100%"
       />

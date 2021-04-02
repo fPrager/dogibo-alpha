@@ -95,11 +95,10 @@ export const Text: React.FC<TextProps> = ({
   const DoGiBoText = (
     <>
       <span className={styles.highlight}>
-
+        Die
         {' '}
-        {DataMock.name}
+        {DataMock.longName}
         {' '}
-        ?
       </span>
       <p className={styles.inline}>
         <span className={styles.highlight}>{DataMock.name}</span>
@@ -117,7 +116,8 @@ export const Text: React.FC<TextProps> = ({
         <span className={styles.highlight}>{DataMock.presentee}</span>
         {' '}
         dann zu seinem Geburtstag.
-        Wenn du also einen Beitrag in die Box wirfst, gibt es mehr zu Spenden und du beteiligst dich
+        Wenn du also einen Beitrag in die Box wirfst,
+        steigt die Menge der Spenden und du beteiligst dich
         gleichzeitig an einem passenden Geschenk.
       </p>
       <p>
@@ -133,7 +133,7 @@ export const Text: React.FC<TextProps> = ({
 
   const EventText = (
     <>
-      <span className={styles.highlight}>Das ist der Wunsch</span>
+      <span className={styles.highlight}>Das Geschenk</span>
       <p>
         Für
         {' '}
@@ -143,7 +143,7 @@ export const Text: React.FC<TextProps> = ({
         {' '}
         {DataMock.name}
         {' '}
-        bis zu seinem Geburtstag
+        bis zum Geburtstag
         {' '}
         <span className={styles.highlight}>
           {
@@ -161,8 +161,16 @@ export const Text: React.FC<TextProps> = ({
         einzuzahlen und sie zu befüllen.
       </p>
       <p>
-        Für ihn wird es dann eine Überraschung werden,
-        wieviele Spenden er mit seinem Geschenk sammeln konnte.
+        Für
+        {' '}
+        <span className={styles.highlight}>{DataMock.presentee}</span>
+        {' '}
+        wird es dann eine Überraschung,
+        wieviele Spenden mit der
+        {' '}
+        {DataMock.name}
+        {' '}
+        gesammelt werden konnte.
       </p>
       <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
@@ -170,7 +178,7 @@ export const Text: React.FC<TextProps> = ({
 
   const TopicText = (
     <>
-      <span className={styles.highlight}>Dahin geht es</span>
+      <span className={styles.highlight}>Das Anliegen</span>
       <p>
         In dieser
         {' '}

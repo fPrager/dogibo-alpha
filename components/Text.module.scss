@@ -4,6 +4,11 @@
     height: 100%;
     overflow: visible;
     width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .block {
@@ -17,8 +22,9 @@
         transform: translate(-50%);
         box-shadow: black 0rem 0.1rem 0.6rem;
     }
-    padding-right: 4rem;
 }
+
+
 
 .textButton {
     color: #00729c;
@@ -31,8 +37,6 @@
     &:hover {
         color: #034e6a;
     }
-
-
 }
 
 .arrowed{
@@ -85,3 +89,13 @@
     min-height: 10rem;
     margin-bottom: 2rem;
 }
+
+@media (orientation: portrait)  {
+    .block{
+       margin-top: 0.5rem;
+    }
+
+    .contribution {
+        margin-top: 2rem;
+    }
+  }

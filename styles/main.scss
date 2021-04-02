@@ -42,6 +42,7 @@ html {
     position: absolute;
     width: 50%;
     height:100%;
+    left: 0%;
   }
 
   .textContainer{
@@ -49,27 +50,19 @@ html {
     width: 50%;
     left:50%;
     height:100%;
-    padding: 1rem;
-    padding-top: 30%;
   }
 
   @media (orientation: portrait) {
     .boxContainer {
       width: 100%;
-      height:50%;
+      height:30%;
     }
 
     .textContainer {
       width: 100%;
-      height:50%;
-      top:50%;
+      height:70%;
+      top:30%;
       left: 0%;
-      padding-top: 1rem;
     }
   }
 
-  @media only screen and (max-height: 400px) {
-    .textContainer{
-      padding-top: 1rem;
-    }
-  }

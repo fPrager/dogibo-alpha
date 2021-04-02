@@ -1,9 +1,9 @@
 .note  {
     font-family: "NorthernSoul" !important;
-    width: 80%;
-    left: 10%;
+    width: calc(100% * 0.5);
+    left: calc(100% * 0.5 * 0.5);
     top: 3%;
-    padding-top: 35%;
+    padding-top: calc(100% * 0.25);
     background-image: url('/images/banknote.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -58,13 +58,13 @@
 }
 
 .msg {
-    font-size: 4vh;
+    font-size: 1.2rem;
     white-space: nowrap;
 }
 
 .donor {
     position: absolute;
-    font-size: 3vh;
+    font-size: 1rem;
     left: 3rem;
     width: 100%;
     white-space: nowrap;
@@ -73,7 +73,7 @@
 .number {
     font-family: "MoneyPenny";
     color:white;
-    font-size: 3rem;
+    font-size: 1.5rem;
     position: absolute;
 }
 
