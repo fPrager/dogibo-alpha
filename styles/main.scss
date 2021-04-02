@@ -49,6 +49,8 @@ html {
     width: 50%;
     left:50%;
     height:100%;
+    padding: 1rem;
+    padding-top: 30%;
   }
 
   @media (orientation: portrait) {
@@ -62,6 +64,12 @@ html {
       height:50%;
       top:50%;
       left: 0%;
-      padding-left: 1rem;
+      padding-top: 1rem;
+    }
+  }
+
+  @media only screen and (max-height: 400px) {
+    .textContainer{
+      padding-top: 1rem;
     }
   }
