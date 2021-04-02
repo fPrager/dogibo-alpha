@@ -42,6 +42,7 @@ export const Box: React.FC<BoxProps> = () => {
     const { animationGroups } = model;
     animationGroups?.forEach((ani) => {
       ani.play();
+      // eslint-disable-next-line no-param-reassign
       ani.loopAnimation = true;
       if (ani.name !== 'Armature|Take 001|BaseLayer') {
         ani.stop();
@@ -62,7 +63,7 @@ export const Box: React.FC<BoxProps> = () => {
             upperRadiusLimit={10}
             lowerRadiusLimit={6}
             panningSensibility={0}
-            wheelPrecision={10000}
+            wheelPrecision={1000}
             angularSensibilityX={5000}
             angularSensibilityY={10000}
           />

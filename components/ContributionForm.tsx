@@ -23,7 +23,6 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
 }) => {
   const [amountValue, setAmountValue] = useState(!newDonation ? `${donation.amount} €` : '');
   const [isSaving, setIsSaving] = useState(false);
-  console.log('rerender with', donation, newDonation);
   const onDonationChange = (changedDonation: Donation, changedNewDonation: boolean) => {
     updateDonation(changedDonation, changedNewDonation);
   };
@@ -98,7 +97,7 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
         value={donation.msg || undefined}
         onChange={(e) => onDonationChange({ ...donation, msg: e.target.value }, newDonation)}
         label="Dein Gruß"
-        placeholder="Wer das liest ist ..."
+        placeholder="wer das liest ist ❤️"
         className={styles.scaledInput}
         width="100%"
       />

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Spinner, Tabs, useTabs } from '@geist-ui/react';
@@ -41,7 +42,6 @@ export const Text: React.FC<TextProps> = ({
   newDonation,
   updateDonation,
 }) => {
-  console.log('render text with', donation);
   const days2Event = getDaysTo(
     Number.parseInt(DataMock.birthday.split('/')[1], 10),
     Number.parseInt(DataMock.birthday.split('/')[0], 10),
@@ -49,6 +49,11 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const { setState, bindings } = useTabs('1');
+  const [height, setHeight] = useState('99%');
+
+  useEffect(() => {
+    setHeight('100%');
+  }, []);
 
   const ContributeButton = (
     <TextButton
@@ -261,7 +266,7 @@ export const Text: React.FC<TextProps> = ({
 
   return (
     <div key={`text-${stage}`} className={`${styles.text} ${styles.fadeIn}`}>
-      <Scrollbars style={{ height: '100%' }}>
+      <Scrollbars style={{ height }}>
         <div className={styles.textContent}>
           {SelectedText}
         </div>

@@ -25,7 +25,7 @@ const palette: Object = {
 
 const DefaultTheme = Themes.createFromLight({
   type: 'default',
-  font,
+  // font,
   palette,
 });
 

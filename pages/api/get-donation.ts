@@ -6,7 +6,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     client,
   } = req.query;
   const donation = await getDonation({ client: `${client}` });
-  console.log(donation, client);
   if (!donation) {
     res.status(200).json({ newDonation: true });
     return;

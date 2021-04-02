@@ -5,12 +5,11 @@ import { Text } from '../components/Text';
 import AppStage from '../utils/AppStage';
 import getClientId from '../utils/get-client-id';
 import { Donation } from '.prisma/client';
+import { BankNote } from '../components/BankNote';
 
 interface AppProps {
 
 }
-
-// <Box stage={stage} setStage={setStage} />
 
 const App: React.FC<AppProps> = () => {
   const client = getClientId();
@@ -47,14 +46,14 @@ const App: React.FC<AppProps> = () => {
     setNewDonation(updatedNewDonation);
   };
 
-  console.log('render all with', donation);
-
   return (
-    <Grid.Container gap={2} style={{ minHeight: '90vh' }}>
-      <Grid xs={24} md={12}>
-        <div>BOX</div>
-      </Grid>
-      <Grid xs={24} md={12}>
+    <>
+      <div className="boxContainer">
+        <Box stage={stage} setStage={setStage} />
+        <BankNote stage={stage} donation={donation} newDonation={newDonation} />
+
+      </div>
+      <div className="textContainer">
         <Text
           stage={stage}
           setStage={setStage}
@@ -63,8 +62,8 @@ const App: React.FC<AppProps> = () => {
           newDonation={newDonation}
           updateDonation={updateDonation}
         />
-      </Grid>
-    </Grid.Container>
+      </div>
+    </>
   );
 };
 
