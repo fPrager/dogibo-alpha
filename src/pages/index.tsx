@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Box } from '../components/Box';
-import { Text } from '../components/Text';
+import Box from '../components/Box';
+import Text from '../components/Text';
 import AppStage from '../utils/AppStage';
 import getClientId from '../utils/get-client-id';
 import { Donation } from '.prisma/client';
-import { BankNote } from '../components/BankNote';
+import Banknote from '../components/Banknote';
 
 interface AppProps {
 
@@ -48,7 +48,7 @@ const App: React.FC<AppProps> = () => {
   return (
     <>
       <div className="boxContainer">
-        <BankNote stage={stage} donation={donation} newDonation={newDonation} />
+        <Banknote stage={stage} donation={donation} />
         <Box stage={stage} setStage={setStage} />
       </div>
       <div className="textContainer">

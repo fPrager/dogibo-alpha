@@ -1,20 +1,19 @@
 import React from 'react';
 import { Donation } from '.prisma/client';
 import AppStage from '../utils/AppStage';
-import styles from './BankNote.module.scss';
 
-export interface BankNoteProps {
+import styles from './Banknote.module.scss';
+
+interface BanknoteProps {
   stage: AppStage,
   donation: Donation,
-  newDonation: boolean,
 }
 
-export const BankNote: React.FC<BankNoteProps> = ({
+export const Banknote: React.FC<BanknoteProps> = ({
   stage,
   donation,
-  newDonation,
 }) => (
-  <div className={`${styles.note} ${true ? styles.newDonation : ''} ${stage !== AppStage.CONTRIBUTE ? styles.hidden : ''}`}>
+  <div className={`${styles.note} ${styles.newDonation} ${stage !== AppStage.CONTRIBUTE ? styles.hidden : ''}`}>
     <div className={[styles.number, styles.top, styles.left].join(' ')}>
       {donation.amount}
     </div>
@@ -32,5 +31,6 @@ export const BankNote: React.FC<BankNoteProps> = ({
       <div className={styles.donor}>{donation.donor}</div>
     </div>
   </div>
-
 );
+
+export default Banknote;

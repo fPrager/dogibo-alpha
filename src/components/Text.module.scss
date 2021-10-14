@@ -1,0 +1,33 @@
+.text {
+    display: block;
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        box-shadow: black 0rem 0.1rem 0.6rem;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn ease 3s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}

@@ -16,7 +16,7 @@ export interface ContributionFormProps {
 
 numeral.locale('de');
 
-export const ContributionForm: React.FC<ContributionFormProps> = ({
+const ContributionForm: React.FC<ContributionFormProps> = ({
   donation,
   newDonation,
   updateDonation,
@@ -112,3 +112,5 @@ export const ContributionForm: React.FC<ContributionFormProps> = ({
     </div>
   );
 };
+
+export default ContributionForm;

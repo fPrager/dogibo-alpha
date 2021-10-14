@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Box, BoxProps } from '../components/Box';
+import { Box, BoxProps } from '../src/components/Box';
 
 export default {
   title: 'Components/Box',

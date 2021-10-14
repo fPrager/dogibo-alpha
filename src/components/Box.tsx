@@ -11,17 +11,17 @@ import {
 
 import '@babylonjs/loaders';
 
-import ScaledModelWithProgress from './ScaledModelWithProgress';
-
-import styles from './Box.module.scss';
 import AppStage from '../utils/AppStage';
 
-export interface BoxProps {
+import styles from './Box.module.scss';
+import ScaledModelWithProgress from './ScaledModelWithProgress';
+
+interface BoxProps {
   stage: AppStage,
   setStage: Function,
 }
 
-export const Box: React.FC<BoxProps> = () => {
+const Box: React.FC<BoxProps> = () => {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -71,8 +71,8 @@ export const Box: React.FC<BoxProps> = () => {
           <ScaledModelWithProgress
             rootUrl="/glb/"
             sceneFilename="chest.glb"
-            scaleToDimension={2}
-            position={Vector3.Zero()}
+            scaleTo={2}
+            center={Vector3.Zero()}
             onModelLoaded={onModelLoaded}
           />
         </Scene>
@@ -80,3 +80,5 @@ export const Box: React.FC<BoxProps> = () => {
     </div>
   );
 };
+
+export default Box;

@@ -5,7 +5,7 @@ const getDaysTo = (
   month: number,
   year: number = new Date().getFullYear(),
 ) : number => {
-  const eventdate = moment(`${month}/${day}/${year} 23:59:00`);
+  const eventdate = moment(`${month}/${day}/${year}`, 'MM/DD/YYYY');
   const todaysdate = moment();
   return eventdate.diff(todaysdate, 'days');
 };

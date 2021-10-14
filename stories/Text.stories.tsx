@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Text, TextProps } from '../components/Text';
+import { Text, TextProps } from '../src/components/Text';
 
 export default {
   title: 'Components/Text',

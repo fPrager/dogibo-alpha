@@ -1,0 +1,14 @@
+.form {
+    min-height: 10rem;
+    margin-bottom: 2rem;
+}
+
+@media (orientation: portrait)  {
+    .block{
+       margin-top: 0.5rem;
+    }
+
+    .contribution {
+        margin-top: 2rem;
+    }
+  }
