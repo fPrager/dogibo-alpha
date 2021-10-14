@@ -24,6 +24,7 @@
     "**/*.tsx"
 , "src/components/ScaledModelWithProgress.js", "src/components/ScaledModelWithProgress.js"  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "next-env.d.ts"
   ]
 }
