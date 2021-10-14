@@ -7,38 +7,35 @@ import { TextBlockProps } from './types';
 import styles from './styles.module.scss';
 
 import TextButton from './inputs/TextButton';
+import replaceWithComponents from '../../utils/replace-with-components';
 
 const TopicText: React.FC<TextBlockProps> = ({
   setStage,
 }) => (
   <>
-    <span className={styles.highlight}>Das Anliegen</span>
+    <span className={styles.highlight}>the cause</span>
     <p>
-      In dieser
-      {' '}
-      <span className={styles.highlight}>{DataMock.name}</span>
-      {' '}
-      werden Spenden für
-      {' '}
-      <span className={styles.highlight}>{DataMock.donee}</span>
-      {' '}
-      gesammelt.
+      {
+        replaceWithComponents(
+          'This {name} contains the donations for {donee}.',
+          [
+            ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
+            ['{donee}', <span className={styles.highlight}>{DataMock.donee}</span>],
+          ],
+        )
+      }
     </p>
     {
           DataMock.background && (
             <>
               <p>
-                Hier sagt
-                {' '}
-                {DataMock.presentee}
-                {' '}
-                warum:
+                { `Here ${DataMock.presentee} tells why:` }
               </p>
               <ReactMarkdown linkTarget="_blank">{DataMock.background}</ReactMarkdown>
             </>
           )
         }
-    <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+    <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
   </>
 );
 

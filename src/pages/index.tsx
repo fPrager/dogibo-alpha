@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
-import Box from '../components/Box';
-import Text from '../components/Text';
+
+import { Donation } from '.prisma/client';
+
 import AppStage from '../utils/AppStage';
 import getClientId from '../utils/get-client-id';
-import { Donation } from '.prisma/client';
+import Box from '../components/Box';
+import Text from '../components/Text';
 import Banknote from '../components/Banknote';
 
-interface AppProps {
-
-}
-
-const App: React.FC<AppProps> = () => {
+const App = () => {
   const client = getClientId();
-
   const [stage, setStage] = useState(AppStage.MAIN);
   const [donation, setDonation] = useState<Donation>({
     id: 0,

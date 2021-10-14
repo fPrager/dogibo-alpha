@@ -9,7 +9,7 @@ interface BanknoteProps {
   donation: Donation,
 }
 
-export const Banknote: React.FC<BanknoteProps> = ({
+const Banknote: React.FC<BanknoteProps> = ({
   stage,
   donation,
 }) => (

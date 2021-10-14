@@ -5,45 +5,42 @@ import styles from './styles.module.scss';
 import { TextBlockProps } from './types';
 
 import TextButton from './inputs/TextButton';
+import replaceWithComponents from '../../utils/replace-with-components';
 
-const DoGiBoText: React.FC<TextBlockProps> = ({
+const DoGiBoText = ({
   setStage,
-}) => (
+}: TextBlockProps) => (
   <>
     <span className={styles.highlight}>
-      Die
-      {' '}
-      {DataMock.longName}
-      {' '}
+      {`The ${DataMock.longName}`}
     </span>
     <p className={styles.inline}>
-      <span className={styles.highlight}>{DataMock.name}</span>
-      {' '}
-      ist eine virtuelle Spendenbox für einen guten Zweck,
-      den
-      {' '}
-      <span className={styles.highlight}>{DataMock.presentee}</span>
-      {' '}
-      gern unterstützen möchte.
+      {
+        replaceWithComponents(
+          '{name} is a virtual donation box for a good cause, that has been chosen by {presentee}.',
+          [
+            ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
+            ['{presentee}', <span className={styles.highlight}>{DataMock.presentee}</span>],
+          ],
+        )
+      }
     </p>
     <p>
-      Die Spendenbox erhält
-      {' '}
-      <span className={styles.highlight}>{DataMock.presentee}</span>
-      {' '}
-      dann zu seinem Geburtstag.
-      Wenn du also einen Beitrag in die Box wirfst,
-      steigt die Menge der Spenden und du beteiligst dich
-      gleichzeitig an einem passenden Geschenk.
+      {
+        replaceWithComponents(
+          'The {name} will be a gift for his birthday. If you contribute to the gift, you not only increase the amount of donations but also join a great, meaningful present.',
+          [
+            ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
+          ],
+        )
+      }
     </p>
     <p>
       <span className={styles.highlight}>
-        {DataMock.name}
-        {' '}
-        - giving wise, giving twice.
+        {`${DataMock.name} - giving wise, giving twice.`}
       </span>
     </p>
-    <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+    <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
   </>
 );
 
