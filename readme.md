@@ -12,7 +12,7 @@ Stay tuned to the official release in the near future:
 
 The project uses `prisma` as GraphQL client to access a PostgreSQL database.  
 [What is prisma?](https://www.prisma.io/docs/concepts/overview/what-is-prisma)  
-[How to setup with existing PostgerSQL](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases-typescript-postgres)
+[How to setup with existing PostgreSQL](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases-typescript-postgres)
 
 To use your postgresql db:
 - add a new `.env` file within `prisma/`
