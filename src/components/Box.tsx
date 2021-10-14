@@ -16,7 +16,7 @@ import AppStage from '../utils/AppStage';
 import styles from './Box.module.scss';
 import ScaledModelWithProgress from './ScaledModelWithProgress';
 
-interface BoxProps {
+export interface BoxProps {
   stage: AppStage,
   setStage: Function,
 }

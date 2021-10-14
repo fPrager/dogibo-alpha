@@ -8,7 +8,9 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook",
-    "postinstall": "prisma generate"
+    "postinstall": "yarn db:client:generate",
+    "db:client:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@babylonjs/core": "^4.2.0",

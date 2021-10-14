@@ -1,20 +1,27 @@
-# How to setup prisma and existing PostgreSQL
+# the project
 
-1. write the schema.sql file
-2. setting up the database with the following command:
+This is the code base of the DoGiBo prototype.  
+[What is a **DoGiBo**?](https://www.fprager.de/posts/dogibo)
 
-  ` psql -h 185.26.156.85 -p 47800 -d c4s -U twb -f schema.sql`
+[Live version](https://dogibo-alpha.vercel.app/) of the prototype.
 
-3. setup prisma schema file with
+Stay tuned to the official release in the near future:
 
-  `npx prisma init`
 
-4. update prisma file on db scheme
+# setup instructions
 
-  `npx prisma introspect`
+The project uses `prisma` as GraphQL client to access a PostgreSQL database.  
+[What is prisma?](https://www.prisma.io/docs/concepts/overview/what-is-prisma)  
+[How to setup with existing PostgerSQL](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases-typescript-postgres)
 
-5. generate prisma client
+To use your postgresql db:
+- add a new `.env` file within `prisma/`
+- add a variable to store the access to your database
+```
+DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/newDogiboDB?schema=public"
+```
 
-  `npx prisma generate`
+- run `yarn db:migrate` to create the database
+- install deps with `yarn install`
+> The typed prisma client will be generated in a postinstall script.
 
-details here: https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project-typescript-postgres
