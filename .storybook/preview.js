@@ -1,7 +1,7 @@
-import '../styles/main.scss';
+import '../src/styles/main.scss';
 
 import { GeistProvider, CssBaseline } from '@geist-ui/react';
-import DefaultTheme from '../themes/default';
+import DefaultTheme from '../src/themes/default';
 
 
 export const parameters = {
