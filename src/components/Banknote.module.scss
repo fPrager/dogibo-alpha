@@ -60,11 +60,12 @@
 .msg {
     font-size: 1.2rem;
     white-space: nowrap;
+    max-width: 200px;
 }
 
 .donor {
     position: absolute;
-    font-size: 1rem;
+    font-size: 1.5rem;
     left: 3rem;
     width: 100%;
     white-space: nowrap;
@@ -72,7 +73,7 @@
 
 .number {
     font-family: "MoneyPenny";
-    color:white;
+    color:black;
     font-size: 1.5rem;
     position: absolute;
 }

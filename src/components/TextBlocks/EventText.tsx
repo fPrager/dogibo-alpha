@@ -7,9 +7,9 @@ import styles from './styles.module.scss';
 
 import TextButton from './inputs/TextButton';
 
-const EventText: React.FC<TextBlockProps> = ({
+function EventText({
   setStage, days2Event,
-}) => {
+}) {
   const whenText = days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`;
   return (
     <>
@@ -24,7 +24,7 @@ const EventText: React.FC<TextBlockProps> = ({
         )}
       </p>
       <p>
-        { `Bis dahin ist es für dich möglich in die ${DataMock.name} "einzuzahlen" und die zu befüllen.` }
+        { `Bis dahin ist es für dich möglich in die ${DataMock.name} "einzuzahlen" und sie zu befüllen.` }
       </p>
       <p>
         { replaceWithComponents(
@@ -37,6 +37,6 @@ const EventText: React.FC<TextBlockProps> = ({
       <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
   );
-};
+}
 
 export default EventText;

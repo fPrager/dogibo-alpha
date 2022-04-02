@@ -6,7 +6,10 @@ import {
   Engine, Scene, ILoadedModel,
 } from 'react-babylonjs';
 import {
-  Vector3, Color4,
+  Vector3, Color4, StandardMaterial, Texture, PBRMaterial,
+
+  Scene as SceneCore,
+  Color3,
 } from '@babylonjs/core';
 
 import '@babylonjs/loaders';
@@ -21,7 +24,12 @@ export interface BoxProps {
   setStage: Function,
 }
 
-const Box: React.FC<BoxProps> = () => {
+let scene: SceneCore;
+
+const getMaterialByName = (model: ILoadedModel, name: string) => (
+  (model.meshes || []).map((m) => m.material)).find((material) => material?.name === name);
+
+function Box() {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -40,6 +48,18 @@ const Box: React.FC<BoxProps> = () => {
 
   const onModelLoaded = (model: ILoadedModel) => {
     const { animationGroups } = model;
+
+    const imageMaterial = getMaterialByName(model, 'Image') as PBRMaterial;
+    if (imageMaterial && imageMaterial.albedoTexture) {
+      imageMaterial.albedoTexture.dispose();
+      imageMaterial.albedoTexture = new Texture('./images/dogibo2022.png', scene);
+    }
+
+    const ribbonMaterial = getMaterialByName(model, 'Ribbon') as PBRMaterial;
+    if (ribbonMaterial) {
+      ribbonMaterial.albedoColor.set((33 * 0.5) / 255, (94 * 0.5) / 255, (107 * 0.5) / 255);
+    }
+
     animationGroups?.forEach((ani) => {
       ani.play();
       // eslint-disable-next-line no-param-reassign
@@ -53,7 +73,10 @@ const Box: React.FC<BoxProps> = () => {
   return (
     <div className={styles.box} ref={ref}>
       <Engine height={height} width={width} antialias adaptToDeviceRatio canvasId="scene">
-        <Scene clearColor={new Color4(0, 0, 0, 0)}>
+        <Scene
+          onSceneMount={(sceneEventArgs) => { scene = sceneEventArgs.scene; }}
+          clearColor={new Color4(0, 0, 0, 0)}
+        >
           <arcRotateCamera
             name="camera1"
             target={new Vector3(0, 1, 0)}
@@ -79,6 +102,6 @@ const Box: React.FC<BoxProps> = () => {
       </Engine>
     </div>
   );
-};
+}
 
 export default Box;

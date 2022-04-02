@@ -10,7 +10,7 @@ import {
 } from '@geist-ui/react';
 
 const palette: Object = {
-  background: '#e5e5d3',
+  background: '#e0e5d3',
   foreground: '#111155',
 };
 
