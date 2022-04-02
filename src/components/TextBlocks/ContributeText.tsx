@@ -30,31 +30,31 @@ const ContributeText: React.FC<TextBlockProps> = ({
       <div className={styles.contributeForm}>
         { LinkedContributionForm }
       </div>
-      <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+      <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
   );
 
   const NewContributeText = (
     <>
-      <span className={styles.highlight}>How it works</span>
+      <span className={styles.highlight}>So funktioniert</span>
       <p>
         {
           replaceWithComponents(
-            'Within only two easy steps the {name} will be a great gift, because of you!',
+            'In nur zwei einfachen Schritten wird die {name} danke dir zu einem super Geschenk!',
             [['{name}', <span className={styles.highlight}>{DataMock.name}</span>]],
           )
         }
       </p>
       <div className={styles.contributeForm}>
         <Tabs {...bindings}>
-          <Tabs.Item label="Step 1" value="1">
+          <Tabs.Item label="Schritt 1" value="1">
             <ReactMarkdown linkTarget="_blank">{DataMock.instructions}</ReactMarkdown>
-            <TextButton text="Go To step 2" arrowed onClick={() => setState('2')} />
+            <TextButton text="Geh zu Schritt 2" arrowed onClick={() => setState('2')} />
           </Tabs.Item>
-          <Tabs.Item label="Step 2" value="2">{ LinkedContributionForm }</Tabs.Item>
+          <Tabs.Item label="Schritt 2" value="2">{ LinkedContributionForm }</Tabs.Item>
         </Tabs>
       </div>
-      <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+      <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
   );
 

@@ -16,30 +16,30 @@ const MainText: React.FC<TextBlockProps> = ({
     <TextButton
       text={
           newDonation
-            ? 'Contribute now!'
-            : 'You can change your donation!'
+            ? 'Jetzt mitmachen!'
+            : 'Du kannst deinen Spendengruß noch anpassen!'
        }
       arrowed
       onClick={() => setStage(AppStage.CONTRIBUTE)}
     />
   );
 
-  const whenText = days2Event === 1 ? 'tomorrow' : `in ${days2Event} days`;
+  const whenText = days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`;
 
   return (
     <>
       <div className={styles.block}>
-        { replaceWithComponents('This is a {name}', [['{name}', <TextButton text="DoGiBo" onClick={() => setStage(AppStage.DOGIBO)} />]])}
+        { replaceWithComponents('Das ist eine {name}', [['{name}', <TextButton text="DoGiBo" onClick={() => setStage(AppStage.DOGIBO)} />]])}
       </div>
       <div className={styles.block}>
         {
-        replaceWithComponents(`A gift to ${DataMock.presentee}'s birthday {when}.`,
+        replaceWithComponents(`Ein Geschenk für ${DataMock.presentee}s Geburtstagsparty {when}.`,
           [['{when}', <TextButton text={whenText} onClick={() => setStage(AppStage.EVENT)} />]])
         }
       </div>
       <div className={styles.block}>
         {
-        replaceWithComponents('and for {donee}',
+        replaceWithComponents('und für {donee}',
           [['{donee}', <TextButton text={DataMock.donee} onClick={() => setStage(AppStage.TOPIC)} />]])
         }
       </div>

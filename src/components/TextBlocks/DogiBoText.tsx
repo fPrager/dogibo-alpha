@@ -12,12 +12,12 @@ const DoGiBoText = ({
 }: TextBlockProps) => (
   <>
     <span className={styles.highlight}>
-      {`The ${DataMock.longName}`}
+      {`Die ${DataMock.longName}`}
     </span>
     <p className={styles.inline}>
       {
         replaceWithComponents(
-          '{name} is a virtual donation box for a good cause, that has been chosen by {presentee}.',
+          '{name} ist eine virtuelle Spendenbox für einen guten Zweck, der von {presentee} ausgewählt wurde.',
           [
             ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
             ['{presentee}', <span className={styles.highlight}>{DataMock.presentee}</span>],
@@ -28,7 +28,7 @@ const DoGiBoText = ({
     <p>
       {
         replaceWithComponents(
-          'The {name} will be a gift for his birthday. If you contribute to the gift, you not only increase the amount of donations but also join a great, meaningful present.',
+          'Die {name} wird das Geschenk zum Geburstag. Wenn du also einen Beitrag in die Box wirfst, steigt die Menge der Spenden und du beteiligst dich gleichzeitig an einem passenden Geschenk.',
           [
             ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
           ],
@@ -40,7 +40,7 @@ const DoGiBoText = ({
         {`${DataMock.name} - giving wise, giving twice.`}
       </span>
     </p>
-    <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+    <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
   </>
 );
 

@@ -16,13 +16,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/ScaledModelWithProgress.js", "src/components/ScaledModelWithProgress.js"  ],
+    "**/*.tsx",
+    "src/components/ScaledModelWithProgress.js",
+    "src/components/ScaledModelWithProgress.js"
+  ],
   "exclude": [
     "node_modules"
   ]

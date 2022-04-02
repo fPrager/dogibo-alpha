@@ -63,12 +63,12 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
     <div className={styles.form}>
       { newDonation ? (
         <p>
-          Tell how much you donated! Put a note in the box and leave a message.
+          Damit deine Spende mit in der Box landet, kannst du hier den Betrag und einen Gruß angeben.
         </p>
       )
         : (
           <p>
-            You like to change something? It is still possible to change something in secret.
+            Du möchtest gern noch etwas anpassen? Dann kannst du das hier gern noch heimlich machen.
           </p>
         )}
       <Spacer />
@@ -76,7 +76,7 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
         value={amountValue}
         onChange={(e) => onAmountChange(e.target.value)}
         onBlur={onAmountBlur}
-        label="Your Donation"
+        label="Deine Spende"
         placeholder="16,16 €"
         className={styles.scaledInput}
         width="100%"
@@ -85,7 +85,7 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
       <Input
         value={donation.donor || undefined}
         onChange={(e) => onDonationChange({ ...donation, donor: e.target.value }, newDonation)}
-        label="Your Name"
+        label="Dein Name"
         placeholder="Best Buddy"
         className={styles.scaledInput}
         width="100%"
@@ -94,8 +94,8 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
       <Input
         value={donation.msg || undefined}
         onChange={(e) => onDonationChange({ ...donation, msg: e.target.value }, newDonation)}
-        label="Your Message"
-        placeholder="To whom who has a ❤️"
+        label="Dein Gruß"
+        placeholder="Wer das liest ist ❤️"
         className={styles.scaledInput}
         width="100%"
       />
@@ -103,7 +103,7 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
       <Grid.Container justify="center">
         <Grid>
           <Button type="secondary" loading={isSaving} onClick={saveDonation}>
-            { newDonation ? 'Throw in now!' : 'Change it!' }
+            { newDonation ? 'Jetzt einwerfen!' : 'Jetzt anpassen!' }
           </Button>
         </Grid>
       </Grid.Container>

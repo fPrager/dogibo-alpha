@@ -10,13 +10,13 @@ import TextButton from './inputs/TextButton';
 const EventText: React.FC<TextBlockProps> = ({
   setStage, days2Event,
 }) => {
-  const whenText = days2Event === 1 ? 'tomorrow' : `in ${days2Event} days`;
+  const whenText = days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`;
   return (
     <>
-      <span className={styles.highlight}>The gift</span>
+      <span className={styles.highlight}>Das Geschenk</span>
       <p>
         { replaceWithComponents(
-          `This ${DataMock.name} is locked for {presentee} until the birthday {when}.`,
+          `Für {presentee} ist die ${DataMock.name} bis zum Geburtstag am {when} verschlossen.`,
           [
             ['{presentee}', <span className={styles.highlight}>{DataMock.presentee}</span>],
             ['{when}', <span className={styles.highlight}>{whenText}</span>],
@@ -24,17 +24,17 @@ const EventText: React.FC<TextBlockProps> = ({
         )}
       </p>
       <p>
-        { `Util than you can add your contribution to the gift and fill the ${DataMock.name}.` }
+        { `Bis dahin ist es für dich möglich in die ${DataMock.name} "einzuzahlen" und die zu befüllen.` }
       </p>
       <p>
         { replaceWithComponents(
-          `It will be a great surprise for {presentee} how many donations were collected with this ${DataMock.name}.`,
+          `Für {presentee} wird es dann eine Überraschung, wieviel Spenden mit der ${DataMock.name} gesammelt wurden.`,
           [
             ['{presentee}', <span className={styles.highlight}>{DataMock.presentee}</span>],
           ],
         )}
       </p>
-      <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+      <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
   );
 };

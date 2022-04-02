@@ -13,11 +13,11 @@ const TopicText: React.FC<TextBlockProps> = ({
   setStage,
 }) => (
   <>
-    <span className={styles.highlight}>the cause</span>
+    <span className={styles.highlight}>Das Anliegen</span>
     <p>
       {
         replaceWithComponents(
-          'This {name} contains the donations for {donee}.',
+          'In dieser {name} werden die Spenden für {donee} gesammelt.',
           [
             ['{name}', <span className={styles.highlight}>{DataMock.name}</span>],
             ['{donee}', <span className={styles.highlight}>{DataMock.donee}</span>],
@@ -29,13 +29,13 @@ const TopicText: React.FC<TextBlockProps> = ({
           DataMock.background && (
             <>
               <p>
-                { `Here ${DataMock.presentee} tells why:` }
+                { `Hier sagt ${DataMock.presentee} warum:` }
               </p>
               <ReactMarkdown linkTarget="_blank">{DataMock.background}</ReactMarkdown>
             </>
           )
         }
-    <TextButton text="Back" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
+    <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
   </>
 );
 
