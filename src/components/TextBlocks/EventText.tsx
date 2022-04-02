@@ -7,9 +7,9 @@ import styles from './styles.module.scss';
 
 import TextButton from './inputs/TextButton';
 
-function EventText({
+const EventText = ({
   setStage, days2Event,
-}) {
+}: TextBlockProps) => {
   const whenText = days2Event === 1 ? 'morgen' : `in ${days2Event} Tagen`;
   return (
     <>
@@ -37,6 +37,6 @@ function EventText({
       <TextButton text="Zurück" arrowed onClick={() => setStage(AppStage.MAIN)} position="bwd" />
     </>
   );
-}
+};
 
 export default EventText;

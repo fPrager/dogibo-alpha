@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
+import { Donation } from '.prisma/client';
 import DataMock from '../../mocks/dogibo.json';
 import AppStage from '../utils/AppStage';
 import getDaysTo from '../utils/get-days-to';
-
-import { Donation } from '.prisma/client';
 
 import styles from './Text.module.scss';
 

@@ -33,14 +33,18 @@ const MainText: React.FC<TextBlockProps> = ({
       </div>
       <div className={styles.block}>
         {
-        replaceWithComponents(`Ein Geschenk für ${DataMock.presentee}s Geburtstagsparty {when}.`,
-          [['{when}', <TextButton text={whenText} onClick={() => setStage(AppStage.EVENT)} />]])
+        replaceWithComponents(
+          `Ein Geschenk für ${DataMock.presentee}s Geburtstagsparty {when}.`,
+          [['{when}', <TextButton text={whenText} onClick={() => setStage(AppStage.EVENT)} />]],
+        )
         }
       </div>
       <div className={styles.block}>
         {
-        replaceWithComponents('und für {donee}',
-          [['{donee}', <TextButton text={DataMock.donee} onClick={() => setStage(AppStage.TOPIC)} />]])
+        replaceWithComponents(
+          'und für {donee}',
+          [['{donee}', <TextButton text={DataMock.donee} onClick={() => setStage(AppStage.TOPIC)} />]],
+        )
         }
       </div>
       <div className={styles.contribution}>

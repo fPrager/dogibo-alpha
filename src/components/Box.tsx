@@ -6,10 +6,8 @@ import {
   Engine, Scene, ILoadedModel,
 } from 'react-babylonjs';
 import {
-  Vector3, Color4, StandardMaterial, Texture, PBRMaterial,
-
+  Vector3, Color4, Texture, PBRMaterial,
   Scene as SceneCore,
-  Color3,
 } from '@babylonjs/core';
 
 import '@babylonjs/loaders';

@@ -9,7 +9,8 @@
         "react/jsx-filename-extension": "off",
         "react/jsx-props-no-spreading": "off" ,
         "react/prop-types": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "react/function-component-definition":"off"
     },
     "globals": {    
         "React": "readonly",
@@ -19,5 +20,6 @@
     },
     "parserOptions": {
         "project": "./tsconfig.json"
-    }
+    },
+    
 }

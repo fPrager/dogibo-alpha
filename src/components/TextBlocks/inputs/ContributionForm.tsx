@@ -5,8 +5,8 @@ import {
 import numeral from 'numeral';
 import 'numeral/locales/de';
 
-import styles from './ContributionForm.module.scss';
 import { Donation } from '.prisma/client';
+import styles from './ContributionForm.module.scss';
 
 export interface ContributionFormProps {
   donation: Donation,
@@ -55,7 +55,9 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
       donation,
       false,
     );
-    await new Promise((resolve) => (setTimeout(resolve, 1000)));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 1000);
+    });
     setIsSaving(false);
   };
 
@@ -63,7 +65,8 @@ const ContributionForm: React.FC<ContributionFormProps> = ({
     <div className={styles.form}>
       { newDonation ? (
         <p>
-          Damit deine Spende mit in der Box landet, kannst du hier den Betrag und einen Gruß angeben.
+          Damit deine Spende mit in der Box landet,
+          kannst du hier den Betrag und einen Gruß angeben.
         </p>
       )
         : (
