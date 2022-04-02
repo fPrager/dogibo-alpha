@@ -27,7 +27,7 @@ let scene: SceneCore;
 const getMaterialByName = (model: ILoadedModel, name: string) => (
   (model.meshes || []).map((m) => m.material)).find((material) => material?.name === name);
 
-function Box() {
+const Box: React.FC<BoxProps> = () => {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -100,6 +100,6 @@ function Box() {
       </Engine>
     </div>
   );
-}
+};
 
 export default Box;
