@@ -26,7 +26,7 @@ const ContributeText: React.FC<TextBlockProps> = ({
 
   const ExistingContributeText = (
     <>
-      <span className={styles.highlight}>Thanks for your donation!</span>
+      <span className={styles.highlight}>Danke für deine Unterstützung!</span>
       <div className={styles.contributeForm}>
         { LinkedContributionForm }
       </div>

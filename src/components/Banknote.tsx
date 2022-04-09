@@ -4,16 +4,18 @@ import AppStage from '../utils/AppStage';
 
 import styles from './Banknote.module.scss';
 
-interface BanknoteProps {
+type BanknoteProps = {
   stage: AppStage,
   donation: Donation,
-}
+  listed?: boolean,
+};
 
-const Banknote: React.FC<BanknoteProps> = ({
+const Banknote = ({
   stage,
   donation,
-}) => (
-  <div className={`${styles.note} ${styles.newDonation} ${stage !== AppStage.CONTRIBUTE ? styles.hidden : ''}`}>
+  listed,
+}: BanknoteProps) => (
+  <div className={`${styles.note} ${styles.newDonation} ${listed && styles.listed} ${stage !== AppStage.CONTRIBUTE ? styles.hidden : ''}`}>
     <div className={[styles.number, styles.top, styles.left].join(' ')}>
       {donation.amount}
     </div>
@@ -32,5 +34,9 @@ const Banknote: React.FC<BanknoteProps> = ({
     </div>
   </div>
 );
+
+Banknote.defaultProps = {
+  listed: false,
+};
 
 export default Banknote;
