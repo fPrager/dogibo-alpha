@@ -2,6 +2,8 @@ import { Tabs, useTabs } from '@geist-ui/react';
 import ReactMarkdown from 'react-markdown';
 
 import DataMock from '../../../mocks/dogibo.json';
+import InstructionsMD from '../../../mocks/instructions.md';
+
 import AppStage from '../../utils/AppStage';
 
 import styles from './styles.module.scss';
@@ -48,7 +50,7 @@ const ContributeText: React.FC<TextBlockProps> = ({
       <div className={styles.contributeForm}>
         <Tabs {...bindings}>
           <Tabs.Item label="Schritt 1" value="1">
-            <ReactMarkdown linkTarget="_blank">{DataMock.instructions}</ReactMarkdown>
+            <ReactMarkdown linkTarget="_blank">{InstructionsMD}</ReactMarkdown>
             <TextButton text="Geh zu Schritt 2" arrowed onClick={() => setState('2')} />
           </Tabs.Item>
           <Tabs.Item label="Schritt 2" value="2">{ LinkedContributionForm }</Tabs.Item>

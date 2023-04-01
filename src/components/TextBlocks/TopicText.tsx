@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 
 import DataMock from '../../../mocks/dogibo.json';
+import BackgroundMD from '../../../mocks/background.md';
+
 import AppStage from '../../utils/AppStage';
 
 import { TextBlockProps } from './types';
@@ -26,12 +28,12 @@ const TopicText: React.FC<TextBlockProps> = ({
       }
     </p>
     {
-          DataMock.background && (
+          BackgroundMD && (
             <>
               <p>
                 { `Hier sagt ${DataMock.presentee} warum:` }
               </p>
-              <ReactMarkdown linkTarget="_blank">{DataMock.background}</ReactMarkdown>
+              <ReactMarkdown linkTarget="_blank">{BackgroundMD}</ReactMarkdown>
             </>
           )
         }

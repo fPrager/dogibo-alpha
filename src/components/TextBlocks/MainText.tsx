@@ -34,7 +34,7 @@ const MainText: React.FC<TextBlockProps> = ({
       <div className={styles.block}>
         {
         replaceWithComponents(
-          `Ein Geschenk für ${DataMock.presentee}s Geburtstagsparty {when}.`,
+          `Ein Geschenk für ${DataMock.presentee}s Geburtstag in Familie {when}.`,
           [['{when}', <TextButton text={whenText} onClick={() => setStage(AppStage.EVENT)} />]],
         )
         }
