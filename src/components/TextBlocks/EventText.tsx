@@ -16,7 +16,7 @@ const EventText = ({
       <span className={styles.highlight}>Das Geschenk</span>
       <p>
         { replaceWithComponents(
-          `Für {presentee} ist die ${DataMock.name} bis zum Geburtstag am {when} verschlossen.`,
+          `Für {presentee} ist die ${DataMock.name} bis zur Geburtstagsfeier am {when} verschlossen.`,
           [
             ['{presentee}', <span className={styles.highlight}>{DataMock.presentee}</span>],
             ['{when}', <span className={styles.highlight}>{whenText}</span>],
