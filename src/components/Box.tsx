@@ -50,12 +50,12 @@ const Box: React.FC<BoxProps> = () => {
     const imageMaterial = getMaterialByName(model, 'Image') as PBRMaterial;
     if (imageMaterial && imageMaterial.albedoTexture) {
       imageMaterial.albedoTexture.dispose();
-      imageMaterial.albedoTexture = new Texture('./images/dogibo2022.png', scene);
+      imageMaterial.albedoTexture = new Texture('./images/dogibo2023.png', scene);
     }
 
     const ribbonMaterial = getMaterialByName(model, 'Ribbon') as PBRMaterial;
     if (ribbonMaterial) {
-      ribbonMaterial.albedoColor.set((33 * 0.5) / 255, (94 * 0.5) / 255, (107 * 0.5) / 255);
+      ribbonMaterial.albedoColor.set((22 * 0.5) / 255, (22 * 0.5) / 255, (107 * 0.5) / 255);
     }
 
     animationGroups?.forEach((ani) => {
